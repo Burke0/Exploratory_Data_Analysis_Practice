@@ -7,14 +7,6 @@ import csv_loader as h
 # Read in the 2018 lightning strike dataset
 df = h.load_csv()
 
-# Inspect the first 10 rows
-df.head(10)
-
-df.shape
-
-# Get more information about the data, including data types of each column
-df.info()
-
 # Convert date column to datetime
 df["date"] = pd.to_datetime(df["date"])
 
@@ -23,7 +15,7 @@ df.groupby(["date"]).sum().sort_values("number_of_strikes", ascending=False).hea
 
 # Create a new `month` column
 df["month"] = df["date"].dt.month
-df.head()
+print(df.head())
 
 # Calculate total number of strikes per month
 # df.groupby(["month"]).sum().sort_values("number_of_strikes", ascending=False).head(12)
@@ -31,7 +23,7 @@ df.groupby(["month"])["number_of_strikes"].sum().sort_values(ascending=False).he
 
 # Create a new `month_txt` column
 df["month_txt"] = df["date"].dt.month_name().str.slice(stop=3)
-df.head()
+print(df.head())
 
 # Create new helper dataframe for plotting
 # df_by_month = (
