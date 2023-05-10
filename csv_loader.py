@@ -27,4 +27,5 @@ def load_csv(delimiter=",", encoding=None):
     print(f"Loaded {len(df)} rows and {len(df.columns)} columns from {file_path}:")
     print(df.head())
     print(df.info())
+    print(df.describe())
     return df
