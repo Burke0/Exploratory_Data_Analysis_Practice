@@ -61,3 +61,40 @@ plt.xticks(rotation=45, horizontalalignment="right")
 
 # Display the plot
 plt.show()
+
+# Create a column representing company valuation as numeric data
+companies_sample["valuation_billions"] = companies_sample["Valuation"]
+# Remove the '$' from each value
+companies_sample["valuation_billions"] = companies_sample[
+    "valuation_billions"
+].str.replace("$", "")
+# Remove the 'B' from each value
+companies_sample["valuation_billions"] = companies_sample[
+    "valuation_billions"
+].str.replace("B", "")
+# Convert column to type int
+companies_sample["valuation_billions"] = companies_sample["valuation_billions"].astype(
+    "int"
+)
+
+print(companies_sample.head())
+
+# Create bar plot
+# with Industry column as the categories of the bars
+# and new valuation column as the heights of the bars
+plt.bar(companies_sample["Industry"], companies_sample["valuation_billions"])
+
+# Set title
+plt.title("Maximum unicorn company valuation per industry (from sample)")
+
+# Set x-axis label
+plt.xlabel("Industry")
+
+# Set y-axis label
+plt.ylabel("Maximum valuation in billions of dollars")
+
+# Rotate labels on the x-axis as a way to avoid overlap in the positions of the text
+plt.xticks(rotation=45, horizontalalignment="right")
+
+# Display the plot
+plt.show()
