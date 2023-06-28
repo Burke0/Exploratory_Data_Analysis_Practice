@@ -93,7 +93,7 @@ lightning_by_year = (
     .reset_index()
 )
 
-lightning_by_year.head()
+print(lightning_by_year.head())
 
 # Combine `lightning_by_month` and `lightning_by_year` dataframes into single dataframe
 percentage_lightning = lightning_by_month.merge(lightning_by_year, on="year")
